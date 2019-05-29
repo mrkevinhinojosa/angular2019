@@ -17,8 +17,10 @@ export class IndividualCharacterComponent implements OnInit {
   
 
   ngOnInit() {
-    console.log(this.router.params['id']);
-    this.character = this.router.paramMap.get('id')
+    
+    const id = this.router.snapshot.paramMap.get('id');
+    this.character = CHARACTERS.find(character => character.id === +id); //+ is converting string 3 to num 3
+    console.log(this.character);
   }
 
 }
