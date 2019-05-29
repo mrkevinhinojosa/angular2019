@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
 import { CharactersComponent } from './characters/characters.component';
+import { IndividualCharacterComponent } from './individual-character/individual-character.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CharactersComponent } from './characters/characters.component';
     AppComponent,
     HomeComponent,
     TodoComponent,
-    CharactersComponent
+    CharactersComponent,
+    IndividualCharacterComponent
   ],
   imports: [
     BrowserModule,      //Make sure to put every module above also down here

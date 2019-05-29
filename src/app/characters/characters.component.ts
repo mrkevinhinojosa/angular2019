@@ -14,7 +14,7 @@ export class CharactersComponent implements OnInit {
 
   characters: CharacterInterface[] = CHARACTERS;
 
-  isHero(character: CharacterInterface): boolean {return Character.type === "Hero";}
+  isHero(character: CharacterInterface): boolean {return character.type === "Hero";}
 
   ngOnInit() {
   }
