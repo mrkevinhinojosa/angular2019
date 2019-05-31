@@ -35,6 +35,14 @@ export class TodoComponent implements OnInit {
     if(this.newTodo.title.trim() !== ''){   //.trim removes empty spaces
     this.todos.push(this.newTodo);
     this.newTodo = new Todo();
+    isHero(character: CharacterInterface): boolean {return character.type === "Hero";}
+  
+    renderCharacters() {
+      this.type = this.route.snapshot.queryParamMap.get("type");
+      if (this.type) {
+        this.characters = CHARACTERS.filter(character => character.type === this.type);
+      }else{
+        this.type = false;
     }
   }
 

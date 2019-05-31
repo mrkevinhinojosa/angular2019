@@ -1,13 +1,29 @@
 <div class="characters">
   <h1>A list of Characters.</h1>
-  <a *ngIf="type" routerLink="/characters">Clear Fileter</a>
+  <button *ngIf="type" (click)="clearFilter()">Clear Fileter</button>
   <ng-container *ngFor="let character of characters">
     <div class="character" [ngClass]="isHero(character) ? 'hero' : 'villian'">
       <h4>{{character.name}}</h4>
       <img src="{{character.image}}" alt="{{character.name}}">
       <p>{{character.description}}</p>
       <a routerLink="/character/{{character.id}}">Learn More</a>
-
     </div>
   </ng-container>
+  <hr>
+  <div class="add-character">
+    <p>Added Abilities: {{newCharacter.abilities.join(','): ""}}</p>
+    <form (ngSubmit)="addNewAbility()">
+        <input type="text" name="abilities" [(ngModel)]="newAbility">
+        <button>Add Ability</button>
+    </form>
+    <form (ngSubmit)="addNewCharacter()" >
+      <input type="text" name="name" [(ngModel)]="newCharacter.name">
+      <input type="text" name="description" [(ngModel)]="newCharacter.description">
+      <input type="text" name="image" [(ngModel)]="newCharacter.image">
+      <input type="radio" name="type" value="Hero" [(ngModel)]="newCharacter.type">Hero  <!--radio is a bubble to select-->>
+      <input type="radio" name="type" value="Villian" [(ngModel)]="newCharacter.type">Villian
+      <button>Add</button>
+
+    </form>    
+  </div>
 </div>

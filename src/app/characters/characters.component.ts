@@ -1,5 +1,5 @@
-import { Component, OnChanges, Input } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import { CHARACTERS } from './mock-characters';
 import { CharacterInterface} from '../interfaces/character-interface';
@@ -10,13 +10,17 @@ import { Character } from '../models/character';
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent implements OnChanges {
+export class CharactersComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute) { }
+  constructor( private route: ActivatedRoute, private router:Router) { }
 
-  @Input() characters: CharacterInterface[];
+  newCharacter: CharacterInterface = new Character();
 
-  @Input() type: string | boolean;
+  newAbility: string = '';
+
+  characters: CharacterInterface[];
+
+  type: string | boolean;
 
   isHero(character: CharacterInterface): boolean {return character.type === "Hero";}
 
@@ -30,7 +34,30 @@ export class CharactersComponent implements OnChanges {
     }
   }
 
-  ngOnChanges(changes) {
+  clearFilter(): void{
+    this.type = false;
+    this.characters = CHARACTERS;
+    this.router.navigateByUrl('/characters');
+  }
+
+  addNewAbility() {
+    const abilities = this.newCharacter.abilities || [];
+    abilities.push(this.newAbility);
+    this.newCharacter.abilities.push(this.newAbility);
+    this.newAbility = '';
+  }
+
+  addNewCharacter(): void{
+    const id = CHARACTERS.length +1;
+    this.newCharacter.id= id;
+    this.characters.push(this.newCharacter);
+    this.newCharacter = new Character();
+
+
+  console.log(this.newCharacter);
+}
+
+  ngOnInit() {
     
     this.renderCharacters();
     // const type = this.route.snapshot.queryParamMap.get("type")

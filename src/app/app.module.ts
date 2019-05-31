@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
 import { CharactersComponent } from './characters/characters.component';
 import { IndividualCharacterComponent } from './individual-character/individual-character.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { IndividualCharacterComponent } from './individual-character/individual-
     HomeComponent,
     TodoComponent,
     CharactersComponent,
-    IndividualCharacterComponent
+    IndividualCharacterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,      //Make sure to put every module above also down here
